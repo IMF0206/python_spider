@@ -13,9 +13,13 @@ from bs4 import BeautifulSoup
 def jingdong(url):
     # page = urllib2.urlopen(url)
     # html_doc = page.read()
-    html_doc = open(r'/home/pengjialing/git/python_spider/jd.html')
+    html_doc = open(r'/home/pengjialing/github/python_spider/jd.html')
     soup = BeautifulSoup(html_doc)
-    print soup.prettify()
+    # print soup.prettify()
+    # taglist = soup.findAll(attrs={'class':'p-name p-name-type-2'})
+    taglist = soup.findAll(attrs={'class':'p-price'})
+    print len(taglist)
+    print taglist[0].nextSibling
     # cx = sqlite3.connect("/home/pengjialing/git/test.db")
     # cu = cx.cursor()
     # cu.execute('drop table if exists '+keyword)
