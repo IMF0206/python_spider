@@ -6,6 +6,8 @@
  
 import urllib2
 import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import re
 import sqlite3
 from bs4 import BeautifulSoup
@@ -20,7 +22,9 @@ def suning(keyword):
         page = urllib2.urlopen(url)
         html_doc = page.read()
         soup = BeautifulSoup(html_doc.decode('utf-8','ignore'))
-        print soup.prettify()
+        # print soup.prettify()
+        taglist = soup.findAll('div', {'class':'res-img'})
+        print len(taglist)
     #     for i in soup.find_all('script'):
     #         string = i.get_text()
     #         namelist = re.findall(ur'"raw_title":"[^\"]+"', string)
